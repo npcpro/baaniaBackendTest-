@@ -1,6 +1,7 @@
 import { Router, Response, Request } from "express";
 import { HomeEntity } from "../database/entities/home.entity";
 import { HomeService } from "../services/home.service";
+import { homeBodyValidate } from "../validator/home-validator";
 export class HomeController {
   public router: Router;
   private homeService: HomeService; 
@@ -58,8 +59,8 @@ export class HomeController {
 
   public routes(){
     this.router.get('/', this.findAll);
-    this.router.post('/', this.create);
-    this.router.patch('/:id', this.update);
+    this.router.post('/', homeBodyValidate, this.create);
+    this.router.patch('/:id', homeBodyValidate, this.update);
     this.router.delete('/:id', this.delete);
   }
 }
