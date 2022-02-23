@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('home')
 export class HomeEntity {
@@ -11,9 +11,15 @@ export class HomeEntity {
   @Column()
   desc: string;
 
-  @Column({ type: 'decimal', precision: 20, scale: 2, default: 0, })
+  @Column({ type: 'double precision',default: 0 })
   price: number;
   
   @Column()
   post_code: string;
+
+  @CreateDateColumn()
+  created_at: Date
+
+  @UpdateDateColumn()
+  updated_at: Date
 }

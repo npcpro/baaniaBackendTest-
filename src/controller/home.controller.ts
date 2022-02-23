@@ -13,14 +13,12 @@ export class HomeController {
 
   public findAll = async (req: Request, res: Response) => {
     try {
-      const query: any = req.query;
-      console.log(query,'query');
-      
-      const homes = await this.homeService.findAll();
-      console.log(homes,'homes');
-      res.send(homes).json();
+      const take: number = req.query.take ? Number(req.query.take) : 0;
+      const skip: number = req.query.skip ? Number(req.query.skip) : 0;
+      const homes = await this.homeService.findAll(take, skip);
+      res.send(homes)
     } catch (error) {
-      console.log(error,'error');
+      console.log(error,'error findAll');
       res.status(500).send('some unknown error');
     }
 
@@ -32,7 +30,7 @@ export class HomeController {
       const newHome = await this.homeService.create(home);
       res.send(newHome);
     } catch (error) {
-      console.log(error,'error');
+      console.log(error,'error create');
       res.status(500).send('some unknown error');
     }
   }
@@ -40,10 +38,10 @@ export class HomeController {
   public update = async (req: Request, res: Response) => {
     try {
       const home = req['body'] as HomeEntity;
-      const id =  req['params']['id'];
+      const id = req['params']['id'];
       res.send(this.homeService.update(home, Number(id)));
     } catch (error) {
-      console.log(error,'error');
+      console.log(error,'error update');
       res.status(500).send('some unknown error');
     }
   }
@@ -53,7 +51,7 @@ export class HomeController {
       const id =  req['params']['id'];
       res.send(this.homeService.delete(Number(id)));
     } catch (error) {
-      console.log(error,'error');
+      console.log(error,'error delete');
       res.status(500).send('some unknown error');
     }
   } 
@@ -61,7 +59,7 @@ export class HomeController {
   public routes(){
     this.router.get('/', this.findAll);
     this.router.post('/', this.create);
-    this.router.put('/:id', this.update);
+    this.router.patch('/:id', this.update);
     this.router.delete('/:id', this.delete);
   }
 }

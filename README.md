@@ -1,31 +1,23 @@
-# Create a Rest API with Express, PostgreSQL, TypeOrm, and TypeScript
+/// create db and change config before install and run ///
+export const DBconfig: any = {
+		type: 'postgres',
+		host: 'localhost',
+		port: 5432,
+		username: 'postgres',
+		password: '1234',
+		database: 'baania',
+		entities: ["build/database/entities/**/*.js"],
+		synchronize: true,
+		name: 'baania',
+}
 
-On this occasion, I'm going to try to explain how to create a simple Rest API using Express framework, PostgreSQL, and coding with TypeScript.
-
-## Prerequisites
-
-Please make sure that Node.js (>= 10.13.0) is installed on your operating system and docker.
-
-You can follow the tutorial at [Create a Rest API with Express, PostgreSQL, TypeOrm, and TypeScript](https://bautistaj20.medium.com/create-a-rest-api-with-express-postgresql-typeorm-and-typescript-ac42a20b66c7).
-
-## Get started
-
-```bash
-git clone https://github.com/bautistaj/expressApi
-```
-```bash
-cd expressApi
-```
-
-```bash
-npm run install
-```
-
-```bash
+npm install
 npm run tsc
-```
+npm run dev
 
-```bash
-node ./build/server.js
-```
+
+
+//// 
+เนื่องจากเวลาจำกัด ซึ่ง ปกติ แล้ว ผมใช้ nest js typescript
+แต่ว่าแต่ ตัวเปน express ก็เลย ไม่ได้ ใส่ dto สำหรับ ขา request ซึ่งปกติบน nest js จะใส่เสมอ
 
