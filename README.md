@@ -16,8 +16,5 @@ npm run tsc
 npm run dev
 
 
-
-//// 
-เนื่องจากเวลาจำกัด ซึ่ง ปกติ แล้ว ผมใช้ nest js typescript
-แต่ว่าแต่ ตัวเปน express ก็เลย ไม่ได้ ใส่ dto สำหรับ ขา request ซึ่งปกติบน nest js จะใส่เสมอ
+ // จาก ฟอร์มของ https://codetest-pre-interview-frontend.pages.dev/ ส่ง price ที่เปน string มา จึง convert ให้
 

@@ -23,7 +23,7 @@ export const homeBodyValidate = (req: Request,res: Response,next: any) => {
 		const homeCreateBodyDto = new HomeBodyDto();
 		homeCreateBodyDto.name = body.name
 		homeCreateBodyDto.desc = body.desc
-		homeCreateBodyDto.price = Number(body.price) // จาก ฟอมร์ของ https://codetest-pre-interview-frontend.pages.dev/ ส่ง price ที่เปน string มา จึง convert ให้
+		homeCreateBodyDto.price = Number(body.price)  // จาก ฟอร์มของ https://codetest-pre-interview-frontend.pages.dev/ ส่ง price ที่เปน string มา จึง convert ให้
 		homeCreateBodyDto.post_code = body.post_code
 		validate(homeCreateBodyDto).then(errors => {
 			console.log(errors, 'errors');
